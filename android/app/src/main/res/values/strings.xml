@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">KasapID</string>
+    <string name="title_activity_main">KasapID</string>
+    <string name="package_name">com.kasap.id</string>
+    <string name="custom_url_scheme">com.kasap.id</string>
+</resources>
