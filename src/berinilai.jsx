@@ -1,4 +1,3 @@
-export default function Berinilai(){return null}
 import React, { useState } from 'react';
 
 export default function BeriNilai({ setPage }) {
