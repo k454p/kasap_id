@@ -1,4 +1,3 @@
-export default function Keranjang(){return null}
 import React from 'react';
 
 export default function Keranjang({ setPage, setCartCount }) {
