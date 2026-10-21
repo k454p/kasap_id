@@ -1,8 +1,6 @@
-export default function Beranda(){return <div>Beranda handled in App.jsx</div>}
 import React from 'react';
 
 export default function Beranda({ setPage }) {
-    // Data produk contoh
     const daftarProduk = [
         { id: 1, nama: 'Kemeja Flanel Casual', harga: 'Rp 145.000', terjual: '1,2rb', rating: 4.8 },
         { id: 2, nama: 'Celana Chinos Panjang', harga: 'Rp 175.000', terjual: '950', rating: 4.7 },
