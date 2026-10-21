@@ -23,3 +23,9 @@ body {
   min-height: 100vh;
   background-color: #f3f4f6;
 }
+/* Latar belakang mewah hijau bergradasi */
+body {
+  background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #0f766e 100%) !important;
+  color: #ffffff !important;
+  min-height: 100vh;
+}
