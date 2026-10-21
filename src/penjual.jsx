@@ -1,4 +1,3 @@
-export default function Penjual(){return null}
 import React from 'react';
 
 export default function Penjual({ setPage }) {

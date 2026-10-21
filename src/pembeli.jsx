@@ -1,4 +1,3 @@
-export default function Pembeli(){return null}
 import React from 'react';
 
 export default function Pembeli({ setPage }) {

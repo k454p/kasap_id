@@ -1,4 +1,3 @@
-export default function Live(){return null}
 import React, { useState } from 'react';
 
 export default function Live({ setPage }) {

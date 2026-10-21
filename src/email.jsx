@@ -1,4 +1,3 @@
-export default function Email(){return null}
 import React, { useState } from 'react';
 
 export default function Email({ setPage }) {

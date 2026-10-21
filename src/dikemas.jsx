@@ -1,4 +1,3 @@
-export default function Dikemas(){return null}
 import React from 'react';
 
 export default function Dikemas({ setPage }) {

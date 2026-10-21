@@ -1,4 +1,3 @@
-export default function Laporan(){return null}
 import React from 'react';
 
 export default function Laporan({ setPage }) {

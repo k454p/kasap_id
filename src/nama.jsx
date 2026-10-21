@@ -1,4 +1,3 @@
-export default function Nama(){return null}
 import React, { useState } from 'react';
 
 export default function Nama({ setPage }) {

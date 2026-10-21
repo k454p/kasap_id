@@ -1,4 +1,3 @@
-export default function Dikirim(){return null}
 import React from 'react';
 
 export default function Dikirim({ setPage }) {

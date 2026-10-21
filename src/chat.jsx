@@ -1,4 +1,3 @@
-export default function Chat(){return null}
 import React, { useState } from 'react';
 
 export default function Chat({ setPage }) {

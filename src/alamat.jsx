@@ -1,4 +1,3 @@
-export default function Alamat(){return null}
 import React, { useState } from 'react';
 
 export default function Alamat({ setPage }) {

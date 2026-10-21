@@ -1,4 +1,3 @@
-export default function Nomerhp(){return null}
 import React, { useState } from 'react';
 
 export default function NomerHp({ setPage }) {
