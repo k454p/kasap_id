@@ -1,145 +1,93 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function Chekout() {
-  // Contoh data pesanan & biaya
-  const [shippingMethod, setShippingMethod] = useState("regular");
-  
-  const productPrice = 150000; // Harga produk
-  const shippingCost = shippingMethod === "express" ? 25000 : 15000; // Ongkir
-  const bankFee = 2500; // Biaya bank / admin
-  const serviceFee = 1000; // Biaya layanan
+export default function Chekout({ setPage }) {
+    const [metode, setMetode] = useState('BCA');
 
-  const totalPayment = productPrice + shippingCost + bankFee + serviceFee;
+    const handleCheckout = (e) => {
+        e.preventDefault();
+        alert('Pesanan berhasil dibuat! Silakan lakukan pembayaran.');
+        setPage('belumdibayar'); // Mengarahkan ke halaman pesanan
+    };
 
-  return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>Checkout Pembayaran</h2>
+    return (
+        <div className="p-4 space-y-4 max-w-md mx-auto bg-gray-50 min-h-screen pb-24">
+            {/* Header */}
+            <div className="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                <button 
+                    onClick={() => setPage('keranjang')}
+                    className="text-blue-600 text-sm font-semibold"
+                >
+                    ← Kembali
+                </button>
+                <h2 className="font-bold text-gray-800 text-base">Checkout Pesanan</h2>
+                <div className="w-10"></div>
+            </div>
 
-      {/* Rincian Produk */}
-      <div style={styles.section}>
-        <h3>Ringkasan Produk</h3>
-        <div style={styles.row}>
-          <span>Kemeja Casual Pria (x1)</span>
-          <span>Rp {productPrice.toLocaleString("id-ID")}</span>
+            {/* Alamat Pengiriman */}
+            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 space-y-2">
+                <h3 className="font-bold text-gray-800 text-sm">📍 Alamat Pengiriman</h3>
+                <p className="text-xs text-gray-600 font-medium">Budi Santoso (0812-3456-7890)</p>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                    Jl. Merdeka No. 45, RT 01 / RW 05, Kel. Menteng, Kec. Menteng, Kota Jakarta Pusat, DKI Jakarta
+                </p>
+            </div>
+
+            {/* Produk Dipesan */}
+            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3">
+                <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-xs shrink-0">
+                    Foto
+                </div>
+                <div className="flex-1">
+                    <h4 className="font-semibold text-xs text-gray-800">Kemeja Flanel Casual Premium</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">1 Barang x Rp 145.000</p>
+                </div>
+                <span className="font-bold text-sm text-blue-600">Rp 145.000</span>
+            </div>
+
+            {/* Metode Pembayaran */}
+            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+                <h3 className="font-bold text-gray-800 text-sm">💳 Pilih Metode Pembayaran</h3>
+                <div className="space-y-2">
+                    {['BCA Transfer', 'Mandiri Transfer', 'QRIS', 'GoPay / OVO'].map((item, idx) => (
+                        <label key={idx} className="flex items-center justify-between p-3 border rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <span className="text-xs font-medium text-gray-700">{item}</span>
+                            <input 
+                                type="radio" 
+                                name="pembayaran" 
+                                defaultChecked={idx === 0} 
+                                className="text-blue-600"
+                            />
+                        </label>
+                    ))}
+                </div>
+            </div>
+
+            {/* Rincian Biaya */}
+            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 space-y-2">
+                <div className="flex justify-between text-xs text-gray-600">
+                    <span>Total Harga Barang</span>
+                    <span>Rp 145.000</span>
+                </div>
+                <div className="flex justify-between text-xs text-gray-600">
+                    <span>Biaya Pengiriman</span>
+                    <span className="text-green-600 font-semibold">Gratis</span>
+                </div>
+                <hr className="border-gray-100 my-1" />
+                <div className="flex justify-between text-sm font-bold text-gray-800">
+                    <span>Total Pembayaran</span>
+                    <span className="text-blue-600">Rp 145.000</span>
+                </div>
+            </div>
+
+            {/* Tombol Buat Pesanan */}
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 max-w-md mx-auto shadow-lg z-50">
+                <button 
+                    onClick={handleCheckout}
+                    className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm shadow-md hover:bg-blue-700 transition"
+                >
+                    Buat Pesanan & Bayar
+                </button>
+            </div>
         </div>
-      </div>
-
-      {/* Pilihan Pengiriman */}
-      <div style={styles.section}>
-        <h3>Pilih Pengiriman</h3>
-        <label style={styles.radioLabel}>
-          <input
-            type="radio"
-            name="shipping"
-            value="regular"
-            checked={shippingMethod === "regular"}
-            onChange={() => setShippingMethod("regular")}
-          />
-          Reguler (3-5 Hari) - Rp 15.000
-        </label>
-        <label style={styles.radioLabel}>
-          <input
-            type="radio"
-            name="shipping"
-            value="express"
-            checked={shippingMethod === "express"}
-            onChange={() => setShippingMethod("express")}
-          />
-          Express (1-2 Hari) - Rp 25.000
-        </label>
-      </div>
-
-      {/* Rincian Biaya */}
-      <div style={styles.section}>
-        <h3>Rincian Pembayaran</h3>
-        <div style={styles.row}>
-          <span>Subtotal Produk</span>
-          <span>Rp {productPrice.toLocaleString("id-ID")}</span>
-        </div>
-        <div style={styles.row}>
-          <span>Ongkos Kirim</span>
-          <span>Rp {shippingCost.toLocaleString("id-ID")}</span>
-        </div>
-        <div style={styles.row}>
-          <span>Biaya Bank / Admin</span>
-          <span>Rp {bankFee.toLocaleString("id-ID")}</span>
-        </div>
-        <div style={styles.row}>
-          <span>Biaya Layanan</span>
-          <span>Rp {serviceFee.toLocaleString("id-ID")}</span>
-        </div>
-        <hr style={styles.divider} />
-        <div style={styles.totalRow}>
-          <span>Total Pembayaran</span>
-          <span style={styles.totalPrice}>Rp {totalPayment.toLocaleString("id-ID")}</span>
-        </div>
-      </div>
-
-      {/* Tombol Bayar */}
-      <button style={styles.button} onClick={() => alert("Pembayaran diproses!")}>
-        Bayar Sekarang
-      </button>
-    </div>
-  );
+    );
 }
-
-// Styling sederhana menggunakan inline CSS
-const styles = {
-  container: {
-    maxWidth: "500px",
-    margin: "20px auto",
-    padding: "20px",
-    fontFamily: "Arial, sans-serif",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    backgroundColor: "#f9f9f9",
-  },
-  title: {
-    textAlign: "center",
-    color: "#333",
-  },
-  section: {
-    marginBottom: "20px",
-    padding: "15px",
-    backgroundColor: "#fff",
-    borderRadius: "6px",
-    boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-  },
-  row: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "8px",
-    color: "#555",
-  },
-  radioLabel: {
-    display: "block",
-    marginBottom: "8px",
-    cursor: "pointer",
-  },
-  divider: {
-    border: "0",
-    borderTop: "1px solid #eee",
-    margin: "10px 0",
-  },
-  totalRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    fontWeight: "bold",
-    fontSize: "16px",
-    color: "#000",
-  },
-  totalPrice: {
-    color: "#e74c3c",
-  },
-  button: {
-    width: "100%",
-    padding: "12px",
-    backgroundColor: "#27ae60",
-    color: "#fff",
-    border: "none",
-    borderRadius: "6px",
-    fontSize: "16px",
-    fontWeight: "bold",
-    cursor: "pointer",
-  },
-};
