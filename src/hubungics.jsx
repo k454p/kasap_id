@@ -1,4 +1,3 @@
-export default function Hubungics(){return null}
 import React, { useState } from 'react';
 
 export default function Hubungics({ setPage }) {
