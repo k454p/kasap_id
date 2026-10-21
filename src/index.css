@@ -2,30 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: #1f2937;
-  background-color: #f3f4f6;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* Reset default margin & padding agar menempel rapi di layar HP/Desktop */
 body {
   margin: 0;
-  display: flex;
-  place-content: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #f3f4f6;
-}
-/* Latar belakang mewah hijau bergradasi */
-body {
-  background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #0f766e 100%) !important;
-  color: #ffffff !important;
-  min-height: 100vh;
+  padding: 0;
 }
