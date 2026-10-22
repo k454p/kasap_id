@@ -1,4 +1,39 @@
-import React from 'react';
+import { useState } from "react";
+
+export default function TambahProduk({ setPage }) {
+  const [form, setForm] = useState({ nama: '', harga: '', stok: '', kategori: 'Pakaian', gambar: '', deskripsi: '' });
+
+  const handleSimpan = () => {
+    if (!form.nama || !form.harga) return alert('Nama & Harga wajib diisi');
+    const list = JSON.parse(localStorage.getItem('kasap_produk') || '[]');
+    list.push({ id: Date.now(), ...form, harga: Number(form.harga) });
+    localStorage.setItem('kasap_produk', JSON.stringify(list));
+    alert('Produk berhasil ditambah!');
+    setPage('penjual');
+  };
+
+  return (
+    <div className="p-4 space-y-4 max-w-md mx-auto bg-gray-50 min-h-screen pb-24">
+      <div className="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm">
+        <button onClick={() => setPage('penjual')} className="text-blue-600 text-sm">← Kembali</button>
+        <h2 className="font-bold">Tambah Produk</h2>
+        <div className="w-10"></div>
+      </div>
+
+      <div className="bg-white p-4 rounded-2xl space-y-3">
+        <input placeholder="Nama Produk" value={form.nama} onChange={e=>setForm({...form, nama:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
+        <input placeholder="Harga (contoh: 145000)" type="number" value={form.harga} onChange={e=>setForm({...form, harga:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
+        <input placeholder="Stok" type="number" value={form.stok} onChange={e=>setForm({...form, stok:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
+        <select value={form.kategori} onChange={e=>setForm({...form, kategori:e.target.value})} className="w-full border p-3 rounded-xl text-sm">
+          <option>Pakaian</option><option>Sepatu</option><option>Tas</option><option>Lainnya</option>
+        </select>
+        <input placeholder="Link Foto Produk (https://...)" value={form.gambar} onChange={e=>setForm({...form, gambar:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
+        <textarea placeholder="Deskripsi" value={form.deskripsi} onChange={e=>setForm({...form, deskripsi:e.target.value})} className="w-full border p-3 rounded-xl text-sm h-24"></textarea>
+        <button onClick={handleSimpan} className="w-full bg-green-600 text-white py-3 rounded-xl font-bold">Simpan Produk</button>
+      </div>
+    </div>
+  )
+}
 
 export default function Penjual({ setPage }) {
     return (
@@ -35,6 +70,21 @@ export default function Penjual({ setPage }) {
             </div>
 
             {/* Statistik Toko */}
+      {/* Tombol Tambah Produk */}
+      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <button
+          onClick={() => setPage('tambahproduk')}
+          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold text-sm transition"
+        >
+          + Tambah Produk Baru
+        </button>
+        <button
+          onClick={() => setPage('daftarproduk')}
+          className="w-full mt-2 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold text-sm"
+        >
+          Lihat Daftar Produk Saya
+        </button>
+      </div>
             <div className="grid grid-cols-2 gap-3">
                 <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                     <p className="text-[10px] text-gray-400 font-medium">Pendapatan Bulan Ini</p>
