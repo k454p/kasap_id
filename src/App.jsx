@@ -72,6 +72,14 @@ export default function App() {
       case 'masukkeranjang': return <MasukKeranjang {...commonProps} />;
       case 'keranjang': return <Keranjang {...commonProps} />;
       case 'chekout': return <Chekout {...commonProps} />;
+case 'akunsaya': return <AkunSaya {...commonProps} />;
+case 'nama': return <Nama {...commonProps} />;
+case 'alamat': return <Alamat {...commonProps} />;
+case 'email': return <Email {...commonProps} />;
+case 'nomerhp': return <NomerHp {...commonProps} />;
+case 'bankewallet': return <BankEwallet {...commonProps} />;
+case 'saldo': return <Saldo {...commonProps} />;
+case 'tarikdana': return <TarikDana {...commonProps} />;
       case 'belumdibayar': return <Belumdibayar {...commonProps} />;
       case 'dikemas': return <Dikemas {...commonProps} />;
       case 'dikirim': return <Dikirim {...commonProps} />;
