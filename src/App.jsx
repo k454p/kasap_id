@@ -56,8 +56,8 @@ import Saldo from './saldo';
 import TarikDana from './tarikdana';
 import TambahProduk from './tambahproduk';
 import Selesai from './selesai';
-import HalamanPembeli from './HALAMAN UNTUK pembeli';
-import HalamanPenjual from './HALAMAN UNTUK penjual';
+import HalamanPembeli from './pembeli';
+import HalamanPenjual from './penjual';
 
 export default function App() {
   // Status halaman aktif & riwayat navigasi (History)
