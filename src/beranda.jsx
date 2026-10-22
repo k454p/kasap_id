@@ -48,8 +48,7 @@ export default function Beranda({ setPage }) {
             {/* Daftar Produk Rekomendasi */}
             <div>
                 <h3 className="font-bold text-gray-800 mb-3">Rekomendasi Untukmu</h3>
-                      {/* KODE BARU UNTUK MENGGANTIKAN BARIS 51 - 71 */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', boxSizing: 'border-box' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', boxSizing: 'border-box' }}>
         {daftarProduk.map((item) => (
           <div
             key={item.id}
