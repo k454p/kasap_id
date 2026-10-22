@@ -1,0 +1,67 @@
+
+import { useState } from 'react';
+
+export default function AllMenuPopup({ setHalaman }) {
+  const pembeli = [
+      { id: 'beranda', label: 'Beranda' },
+          { id: 'keranjang', label: 'Keranjang' },
+              { id: 'chekout', label: 'Checkout' },
+                  { id: 'belumdibayar', label: 'Belum Bayar' },
+                      { id: 'dikemas', label: 'Dikemas' },
+                          { id: 'dikirim', label: 'Dikirim' },
+                              { id: 'selesai', label: 'Selesai' },
+                                  { id: 'berinilai', label: 'Beri Nilai' },
+                                    ];
+                                      const penjual = [
+                                          { id: 'tambahproduk', label: 'Tambah Produk' },
+                                              { id: 'produk', label: 'Produk Saya' },
+                                                  { id: 'live', label: 'Live' },
+                                                      { id: 'saldo', label: 'Saldo' },
+                                                          { id: 'tarikdana', label: 'Tarik Dana' },
+                                                              { id: 'laporan', label: 'Laporan' },
+                                                                ];
+                                                                  const akun = [
+                                                                      { id: 'akunsaya', label: 'Akun Saya' },
+                                                                          { id: 'chat', label: 'Chat' },
+                                                                              { id: 'alamat', label: 'Alamat' },
+                                                                                  { id: 'bankewallet', label: 'Bank' },
+                                                                                    ];
+
+                                                                                      return (
+                                                                                          <div className="mt-4 space-y-4">
+                                                                                                <div>
+                                                                                                        <p className="text-[11px] font-bold text-slate-400 mb-2">PEMBELI</p>
+                                                                                                                <div className="grid grid-cols-4 gap-3 bg-white p-4 rounded-2xl">
+                                                                                                                          {pembeli.map(m => (
+                                                                                                                                      <button key={m.id} onClick={() => setHalaman(m.id)} className="flex flex-col items-center gap-1">
+                                                                                                                                                    <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-sm">{m.label[0]}</div>
+                                                                                                                                                                  <span className="text-[10px] font-semibold">{m.label}</span>
+                                                                                                                                                                              </button>
+                                                                                                                                                                                        ))}
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                            <div>
+                                                                                                                                                                                                                    <p className="text-[11px] font-bold text-slate-400 mb-2">PENJUAL</p>
+                                                                                                                                                                                                                            <div className="grid grid-cols-4 gap-3 bg-white p-4 rounded-2xl">
+                                                                                                                                                                                                                                      {penjual.map(m => (
+                                                                                                                                                                                                                                                  <button key={m.id} onClick={() => setHalaman(m.id)} className="flex flex-col items-center gap-1">
+                                                                                                                                                                                                                                                                <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-sm">{m.label[0]}</div>
+                                                                                                                                                                                                                                                                              <span className="text-[10px] font-semibold">{m.label}</span>
+                                                                                                                                                                                                                                                                                          </button>
+                                                                                                                                                                                                                                                                                                    ))}
+                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                        <div>
+                                                                                                                                                                                                                                                                                                                                <p className="text-[11px] font-bold text-slate-400 mb-2">AKUN</p>
+                                                                                                                                                                                                                                                                                                                                        <div className="grid grid-cols-4 gap-3 bg-white p-4 rounded-2xl">
+                                                                                                                                                                                                                                                                                                                                                  {akun.map(m => (
+                                                                                                                                                                                                                                                                                                                                                              <button key={m.id} onClick={() => setHalaman(m.id)} className="flex flex-col items-center gap-1">
+                                                                                                                                                                                                                                                                                                                                                                            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-sm">{m.label[0]}</div>
+                                                                                                                                                                                                                                                                                                                                                                                          <span className="text-[10px] font-semibold">{m.label}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                      </button>
+                                                                                                                                                                                                                                                                                                                                                                                                                ))}
+                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    )
+                                                                                                                                                                                                                                                                                                                                                                                                                                    }fix: update App.jsx
