@@ -1,6 +1,176 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center; /* Ini yang bikin semua tulisan jadi rata tengah dan tata letak Shopee jadi aneh */
+:root {
+  --primary: #059669;
+  --primary-light: #10b981;
+  --primary-bg: #ecfdf5;
+  --accent: #f59e0b;
+  --dark: #1f2937;
+  --gray: #6b7280;
+  --light-gray: #f3f4f6;
+  --border: #e5e7eb;
+}
+
+.app-viewport {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Bergaya Shopee Hijau */
+.shopee-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: white;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 7px 12px;
+  gap: 8px;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  color: var(--dark);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  background: #ef4444;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 2px 5px;
+  border: 1.5px solid white;
+}
+
+/* Quick Bar Saldo & Pesanan */
+.quick-shopee-bar {
+  margin: 10px 14px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.08);
+  border: 1px solid #d1fae5;
+}
+
+.quick-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.quick-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  margin: 0 10px;
+}
+
+.q-label {
+  font-size: 11px;
+  color: var(--gray);
+}
+
+.q-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.text-emerald {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+/* Area Konten Dinamis Komponen */
+.content-container {
+  flex: 1;
+  padding: 10px 14px 80px 14px; /* Ruang untuk Bottom Nav */
+}
+
+/* Bottom Nav Shopee */
+.shopee-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 9px 0 7px 0;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
+  z-index: 50;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  flex: 1;
+}
+
+.nav-btn i {
+  font-size: 19px;
+}
+
+.nav-btn.active {
+  color: var(--primary);
+  font-weight: 700;
 }
