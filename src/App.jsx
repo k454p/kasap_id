@@ -8,7 +8,7 @@ import Keranjang from './keranjang.jsx';
 import Chekout from './chekout.jsx';
 
 // Status Transaksi
-import BelumBayar from './belumbayar.jsx';
+import BelumdiBayar from './belumdibayar.jsx';
 import Dikemas from './dikemas.jsx';
 import Dikirim from './dikirim.jsx';
 import Selesai from './selesai.jsx';
@@ -72,7 +72,7 @@ export default function App() {
       case 'masukkeranjang': return <MasukKeranjang {...commonProps} />;
       case 'keranjang': return <Keranjang {...commonProps} />;
       case 'chekout': return <Chekout {...commonProps} />;
-      case 'belumbayar': return <BelumBayar {...commonProps} />;
+      case 'belumdibayar': return <BelumdiBayar {...commonProps} />;
       case 'dikemas': return <Dikemas {...commonProps} />;
       case 'dikirim': return <Dikirim {...commonProps} />;
       case 'selesai': return <Selesai {...commonProps} />;
