@@ -29,8 +29,8 @@ import TambahProduk from './tambahproduk';
 import Selesai from './selesai';
 
 // Halaman Pembeli & Penjual (Sesuaikan nama file jika belum di-rename)
-import HalamanPembeli from './HALAMAN UNTUK pembeli'; // atau './pembeli'
-import HalamanPenjual from './HALAMAN UNTUK penjual'; // atau './penjual'
+import Pembeli from './pembeli';
+import Penjual from './penjual';
 
 export default function App() {
   // State halaman yang sedang aktif
