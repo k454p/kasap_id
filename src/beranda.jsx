@@ -51,12 +51,20 @@ export default function Beranda({ setPage }) {
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%', boxSizing: 'border-box' }}>
         {daftarProduk.map((item) => (
           <div
-            key={item.id}
-            onClick={() => setPage('produk')}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition w-full"
-          >
-            <div className="h-36 bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
-              Foto Produk
+  key={item.id}
+  onClick={() => setPage('produk')}
+  style={{
+    backgroundColor: '#ffffff',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+    overflow: 'hidden',
+    cursor: 'pointer',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  }}
+>
             </div>
             <div className="p-3">
               <h4 className="font-medium text-sm text-gray-800 line-clamp-2">{item.nama}</h4>
