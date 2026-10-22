@@ -1,72 +1,76 @@
 import { useState } from "react";
 
-export default function Live({ setPage }) {
+export default function Live({ setPage, navigate }) {
+  const go = (p) => {
+    if (navigate) navigate(p);
+    else if (setPage) setPage(p);
+  };
   const [komen, setKomen] = useState("");
   const [chats, setChats] = useState([
     { user: "Siti Rahma", text: "Kak, bahannya tebal atau tipis?" },
     { user: "Ahmad Fauzi", text: "Warna navy ada gak kak?" },
-    { user: "【entity-Dewi Lestari¦canonical_name=Dewi Lestari】", text: "Udah check out kemejanya ya kak! 🔥" },
+    { user: "【entity-Dewi Lestari¦canonical_name=Dewi Lestari】", text: "Udah checkout kemejanya ya kak! 🔥" },
   ]);
 
-  const kirimChat = () => {
-    if (!komen) return;
-    setChats([...chats, { user: "Anda (Pembeli)", text: komen }]);
+  const kirim = () => {
+    if (!komen.trim()) return;
+    setChats([...chats, { user: "Anda", text: komen }]);
     setKomen("");
   };
 
   return (
-    <div className="relative w-full max-w-md mx-auto bg-black min-h-screen pb-24 overflow-hidden">
-      {/* Video Area */}
-      <div className="relative w-full h-[75vh] bg-gradient-to-b from-green-600 to-black flex-col">
-        {/* Header Live */}
-        <div className="p-3 flex justify-between items-start">
-          <div className="flex items-center gap-2">
-            <button onClick={() => setPage('beranda')} className="bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center">✕</button>
-            <div className="flex items-center gap-2 bg-black/40 rounded-full px-3 py-1">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-bold text-sm">K</div>
+    <div style={{ background: "#000", minHeight: "100vh", paddingBottom: "80px", position: "relative", maxWidth: "450px", margin: "0 auto" }}>
+      
+      {/* VIDEO AREA */}
+      <div style={{ height: "70vh", background: "linear-gradient(to bottom, #16a34a, #000)", position: "relative", padding: "12px" }}>
+        
+        {/* Header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <button onClick={() => go('beranda')} style={{ background: "rgba(0,0,0,0.4)", color: "white", border: "none", width: "32px", height: "32px", borderRadius: "50%", fontWeight: "bold" }}>✕</button>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", background: "rgba(0,0,0,0.4)", borderRadius: "20px", padding: "4px 10px" }}>
+              <div style={{ width: "28px", height: "28px", background: "white", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "12px" }}>K</div>
               <div>
-                <p className="text-white text-xs font-bold">Kasap ID Official</p>
-                <p className="text-white/70 text-[10px]">🔴 LIVE • 1.2k penonton</p>
+                <div style={{ color: "white", fontSize: "11px", fontWeight: "bold" }}>Kasap ID Official</div>
+                <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "9px" }}>🔴 LIVE • 1.2k</div>
               </div>
             </div>
           </div>
-          <div className="bg-red-500 text-white text-[10px] px-2 py-1 rounded-full font-bold animate-pulse">● LIVE</div>
+          <div style={{ background: "red", color: "white", fontSize: "10px", padding: "2px 8px", borderRadius: "10px", fontWeight: "bold" }}>● LIVE</div>
         </div>
 
-        {/* Chat Overlay */}
-        <div className="mt-auto p-3 space-y-2 max-h-[40%] overflow-y-auto">
+        {/* Chat */}
+        <div style={{ position: "absolute", bottom: "12px", left: "12px", right: "12px" }}>
           {chats.map((c, i) => (
-            <div key={i} className="flex gap-1">
-              <span className="text-yellow-400 text-xs font-bold">{c.user}:</span>
-              <span className="text-white text-xs">{c.text}</span>
+            <div key={i} style={{ marginBottom: "6px", fontSize: "13px" }}>
+              <span style={{ color: "#facc15", fontWeight: "bold", marginRight: "4px" }}>{c.user}:</span>
+              <span style={{ color: "white" }}>{c.text}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Product Card Floating */}
-      <div className="absolute bottom-20 left-3 right-3 bg-white rounded-2xl p-3 flex items-center gap-3 shadow-xl">
-        <img src="https://via.placeholder.com/60" alt="produk" className="w-14 h-14 rounded-xl object-cover bg-gray-100" />
-        <div className="flex-1">
-          <p className="text-[10px] text-gray-400">No. 1</p>
-          <p className="text-xs font-bold text-gray-800 line-clamp-1">Kemeja Flanel Casual Premium</p>
-          <p className="text-sm font-extrabold text-red-500">Rp 145.000</p>
+      {/* PRODUK CARD */}
+      <div style={{ position: "absolute", bottom: "110px", left: "12px", right: "12px", background: "white", borderRadius: "16px", padding: "10px", display: "flex", alignItems: "center", gap: "10px", boxShadow: "0 10px 20px rgba(0,0,0,0.3)" }}>
+        <img src="https://via.placeholder.com/60" alt="produk" style={{ width: "50px", height: "50px", borderRadius: "12px", background: "#eee" }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: "10px", color: "#999" }}>No. 1</div>
+          <div style={{ fontSize: "12px", fontWeight: "bold", color: "#111" }}>Kemeja Flanel Casual Premium</div>
+          <div style={{ fontSize: "13px", fontWeight: "800", color: "#ef4444" }}>Rp 145.000</div>
         </div>
-        <button onClick={() => setPage('produk')} className="bg-green-600 text-white px-5 py-2 rounded-xl text-xs font-bold">Beli</button>
+        <button onClick={() => go('produk')} style={{ background: "#16a34a", color: "white", border: "none", padding: "8px 18px", borderRadius: "12px", fontWeight: "bold", fontSize: "12px" }}>Beli</button>
       </div>
 
-      {/* Input Chat */}
-      <div className="fixed bottom-[65px] left-0 right-0 max-w-md mx-auto p-3 flex gap-2 bg-gradient-to-t from-black/80 to-transparent">
+      {/* INPUT CHAT */}
+      <div style={{ position: "fixed", bottom: "65px", left: "0", right: "0", maxWidth: "450px", margin: "0 auto", padding: "10px 12px", display: "flex", gap: "8px", background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)" }}>
         <input
           value={komen}
           onChange={(e) => setKomen(e.target.value)}
           placeholder="Kirim komentar atau tanya produk..."
-          className="flex-1 bg-white/20 backdrop-blur text-white placeholder-white/60 text-xs px-4 py-2.5 rounded-full border border-white/20 focus:outline-none"
+          style={{ flex: 1, background: "rgba(255,255,255,0.2)", color: "white", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "20px", padding: "10px 16px", fontSize: "12px", outline: "none" }}
         />
-        <button onClick={kirimChat} className="bg-white text-black px-4 py-2 rounded-full text-xs font-bold">Kirim</button>
+        <button onClick={kirim} style={{ background: "white", color: "black", border: "none", padding: "0 16px", borderRadius: "20px", fontWeight: "bold", fontSize: "12px" }}>Kirim</button>
       </div>
-
-      {/* Bottom Nav tetap dari App.jsx, jadi jangan ditambah lagi */}
     </div>
   );
 }
