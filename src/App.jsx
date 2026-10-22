@@ -34,7 +34,7 @@ import Penjual from './penjual.jsx';
 import Pembeli from './pembeli.jsx';
 import TambahProduk from './tambahproduk.jsx';
 import Laporan from './laporan.jsx';
-
+import TambahProduk from './tambahproduk.jsx';
 export default function App() {
   // State Halaman Aktif & History Navigasi
   const [currentPage, setCurrentPage] = useState('beranda');
@@ -101,6 +101,7 @@ case 'tarikdana': return <TarikDana {...commonProps} />;
       case 'tambahproduk': return <TambahProduk {...commonProps} />;
       case 'laporan': return <Laporan {...commonProps} />;
       default: return <Beranda {...commonProps} />;
+case 'tambahproduk': return <TambahProduk {...commonProps} />;
     }
   };
 
