@@ -1,101 +1,72 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 export default function Live({ setPage }) {
-    const [komentarList, setKomentarList] = useState([
-        { id: 1, user: 'Siti Rahma', text: 'Kak, bahannya tebal atau tipis?' },
-        { id: 2, user: 'Ahmad Fauzi', text: 'Warna navy ada gak kak?' },
-        { id: 3, user: 'Dewi Lestari', text: 'Udah check out kemejanya ya kak! 🔥' }
-    ]);
-    const [inputKomentar, setInputKomentar] = useState('');
+  const [komen, setKomen] = useState("");
+  const [chats, setChats] = useState([
+    { user: "Siti Rahma", text: "Kak, bahannya tebal atau tipis?" },
+    { user: "Ahmad Fauzi", text: "Warna navy ada gak kak?" },
+    { user: "【entity-Dewi Lestari¦canonical_name=Dewi Lestari】", text: "Udah check out kemejanya ya kak! 🔥" },
+  ]);
 
-    const kirimKomentar = (e) => {
-        e.preventDefault();
-        if (!inputKomentar.trim()) return;
+  const kirimChat = () => {
+    if (!komen) return;
+    setChats([...chats, { user: "Anda (Pembeli)", text: komen }]);
+    setKomen("");
+  };
 
-        setKomentarList([
-            ...komentarList,
-            { id: Date.now(), user: 'Anda (Pembeli)', text: inputKomentar }
-        ]);
-        setInputKomentar('');
-    };
-
-    return (
-        <div className="relative h-screen max-w-md mx-auto bg-black overflow-hidden flex flex-col justify-between pb-16">
-            {/* Latar Belakang / Simulasi Video Live */}
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-zinc-800 to-black flex items-center justify-center">
-                <div className="text-center text-gray-500 space-y-2">
-                    <span className="text-4xl animate-pulse">🔴</span>
-                    <p className="text-xs tracking-wider uppercase font-bold text-gray-400">Live Streaming Sedang Berlangsung</p>
-                </div>
+  return (
+    <div className="relative w-full max-w-md mx-auto bg-black min-h-screen pb-24 overflow-hidden">
+      {/* Video Area */}
+      <div className="relative w-full h-[75vh] bg-gradient-to-b from-green-600 to-black flex-col">
+        {/* Header Live */}
+        <div className="p-3 flex justify-between items-start">
+          <div className="flex items-center gap-2">
+            <button onClick={() => setPage('beranda')} className="bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center">✕</button>
+            <div className="flex items-center gap-2 bg-black/40 rounded-full px-3 py-1">
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-bold text-sm">K</div>
+              <div>
+                <p className="text-white text-xs font-bold">Kasap ID Official</p>
+                <p className="text-white/70 text-[10px]">🔴 LIVE • 1.2k penonton</p>
+              </div>
             </div>
-
-            {/* Header Live */}
-            <div className="relative z-10 p-4 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent">
-                <div className="flex items-center gap-2 bg-black/40 backdrop-md px-3 py-1.5 rounded-full border border-white/10">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                        K
-                    </div>
-                    <div>
-                        <p className="text-white text-xs font-bold">Kasap ID Official</p>
-                        <p className="text-[10px] text-red-500 font-extrabold flex items-center gap-1">
-                            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping inline-block"></span> LIVE
-                        </p>
-                    </div>
-                </div>
-                <button 
-                    onClick={() => setPage('beranda')}
-                    className="bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border border-white/10"
-                >
-                    ✕
-                </button>
-            </div>
-
-            {/* Kotak Produk Melayang (Pinned Product) */}
-            <div className="relative z-10 px-4">
-                <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20 flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-[10px] shrink-0 font-medium">
-                        Foto
-                    </div>
-                    <div className="flex-1">
-                        <span className="bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">No. 1</span>
-                        <h4 className="font-bold text-xs text-gray-900 truncate mt-0.5">Kemeja Flanel Casual Premium</h4>
-                        <p className="text-blue-600 font-extrabold text-xs">Rp 145.000</p>
-                    </div>
-                    <button 
-                        onClick={() => setPage('keranjang')}
-                        className="bg-blue-600 text-white px-3 py-2 rounded-xl text-xs font-bold shadow hover:bg-blue-700 transition"
-                    >
-                        Beli
-                    </button>
-                </div>
-            </div>
-
-            {/* Live Chat / Komentar Berjalan */}
-            <div className="relative z-10 p-4 space-y-2 max-h-48 overflow-y-auto flex flex-col justify-end">
-                {komentarList.map((kom) => (
-                    <div key={kom.id} className="bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-xl text-xs text-white max-w-[85%] border border-white/5">
-                        <span className="font-bold text-blue-400 mr-2">{kom.user}:</span>
-                        <span className="text-gray-200">{kom.text}</span>
-                    </div>
-                ))}
-            </div>
-
-            {/* Input Komentar Bawah */}
-            <form onSubmit={kirimKomentar} className="relative z-10 p-3 bg-gradient-to-t from-black/90 to-transparent flex gap-2">
-                <input 
-                    type="text" 
-                    value={inputKomentar}
-                    onChange={(e) => setInputKomentar(e.target.value)}
-                    placeholder="Kirim komentar atau tanya produk..." 
-                    className="flex-1 bg-white/10 border border-white/20 text-white placeholder-gray-400 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-blue-500"
-                />
-                <button 
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2.5 rounded-xl font-bold text-xs shadow hover:bg-blue-700 transition"
-                >
-                    Kirim
-                </button>
-            </form>
+          </div>
+          <div className="bg-red-500 text-white text-[10px] px-2 py-1 rounded-full font-bold animate-pulse">● LIVE</div>
         </div>
-    );
+
+        {/* Chat Overlay */}
+        <div className="mt-auto p-3 space-y-2 max-h-[40%] overflow-y-auto">
+          {chats.map((c, i) => (
+            <div key={i} className="flex gap-1">
+              <span className="text-yellow-400 text-xs font-bold">{c.user}:</span>
+              <span className="text-white text-xs">{c.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Product Card Floating */}
+      <div className="absolute bottom-20 left-3 right-3 bg-white rounded-2xl p-3 flex items-center gap-3 shadow-xl">
+        <img src="https://via.placeholder.com/60" alt="produk" className="w-14 h-14 rounded-xl object-cover bg-gray-100" />
+        <div className="flex-1">
+          <p className="text-[10px] text-gray-400">No. 1</p>
+          <p className="text-xs font-bold text-gray-800 line-clamp-1">Kemeja Flanel Casual Premium</p>
+          <p className="text-sm font-extrabold text-red-500">Rp 145.000</p>
+        </div>
+        <button onClick={() => setPage('produk')} className="bg-green-600 text-white px-5 py-2 rounded-xl text-xs font-bold">Beli</button>
+      </div>
+
+      {/* Input Chat */}
+      <div className="fixed bottom-[65px] left-0 right-0 max-w-md mx-auto p-3 flex gap-2 bg-gradient-to-t from-black/80 to-transparent">
+        <input
+          value={komen}
+          onChange={(e) => setKomen(e.target.value)}
+          placeholder="Kirim komentar atau tanya produk..."
+          className="flex-1 bg-white/20 backdrop-blur text-white placeholder-white/60 text-xs px-4 py-2.5 rounded-full border border-white/20 focus:outline-none"
+        />
+        <button onClick={kirimChat} className="bg-white text-black px-4 py-2 rounded-full text-xs font-bold">Kirim</button>
+      </div>
+
+      {/* Bottom Nav tetap dari App.jsx, jadi jangan ditambah lagi */}
+    </div>
+  );
 }
