@@ -82,8 +82,8 @@ export default function Beranda({ setPage }) {
                 <span>⭐ {item.rating}</span>
                 <span>Terjual {item.terjual}</span>
               </div>
-
-        </div>
-    );
-}
+         </div>
+        ))
+     
+    
 
