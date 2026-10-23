@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Beranda({ setPage }) {
     const daftarProduk = [
-        { id: 1, nama: 'Kemeja Flanel Casual', harga: 'Rp 145.000', terjual: '1,2rb', rating: 4.8 },
-        { id: 2, nama: 'Celana Chinos Panjang', harga: 'Rp 175.000', terjual: '950', rating: 4.7 },
-        { id: 3, nama: 'Sepatu Sneakers Pria', harga: 'Rp 299.000', terjual: '3,4rb', rating: 4.9 },
+        { id: 1, nama: 'Barang Ecobak', harga: 'Rp 145.000', terjual: '1,2rb', rating: 4.8 },
+        { id: 2, nama: 'Batek Madura', harga: 'Rp 175.000', terjual: '950', rating: 4.7 },
+        { id: 3, nama: 'Samper Nyecceng', harga: 'Rp 299.000', terjual: '3,4rb', rating: 4.9 },
         { id: 4, nama: 'Tas Ransel Laptop', harga: 'Rp 210.000', terjual: '820', rating: 4.6 }
     ];
 
@@ -65,6 +65,15 @@ export default function Beranda({ setPage }) {
     flexDirection: 'column'
   }}
 >
+  <img 
+    src={item.gambar} 
+    alt={item.nama} 
+    style={{
+      width: '100%',
+      height: '140px',
+      objectFit: 'cover'
+    }} 
+  />
             </div>
             <div className="p-3">
               <h4 className="font-medium text-sm text-gray-800 line-clamp-2">{item.nama}</h4>
