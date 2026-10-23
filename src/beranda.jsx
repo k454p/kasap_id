@@ -84,9 +84,7 @@ export default function Beranda({ setPage }) {
               </div>
             </div>
           </div>
-        ))}
-      </d
-            </div>
+        ))) 
         </div>
     );
 }
