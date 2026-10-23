@@ -63,30 +63,25 @@ export default function Beranda({ setPage }) {
     width: '100%',
     display: 'flex',
     flexDirection: 'column'
-  }}
->
-  <img 
-    src={item.gambar} 
-    alt={item.nama} 
-    style={{
-      width: '100%',
-      height: '140px',
-      objectFit: 'cover'
-    }} 
-  />
-            </div>
-            <div className="p-3">
-              <h4 className="font-medium text-sm text-gray-800 line-clamp-2">{item.nama}</h4>
-              <p className="text-orange-500 font-bold text-sm mt-1">{item.harga}</p>
-              <div className="flex justify-between items-center text-xs text-gray-500 mt-2">
-                <span>⭐ {item.rating}</span>
-                <span>Terjual {item.terjual}</span>
-                
-              </div>  
-
-            
+        }}
+    >
+      <img
+        src={item.gambar}
+        alt={item.nama}
+        style={{
+          width: '100%',
+          height: '140px',
+          objectFit: 'cover'
+        }}
+      />
+      <div className="p-3">
+        <h4 className="font-medium text-gray-800">{item.nama}</h4>
+        <p className="text-orange-500 font-bold">Rp {item.harga}</p>
+        <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
+          <span>⭐ {item.rating}</span>
+          <span>Terjual {item.terjual}</span>
+        </div>
+      </div>
     </div>
-        
-     );
-        
-            }
+  ));
+};
