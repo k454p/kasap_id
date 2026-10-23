@@ -1,5 +1,6 @@
 import React from 'react';
 import AkunSaya from './akunsaya';
+import DetailProduk from './detail';
 
 export default function Beranda({ menu, navigate, goBack }) {
   // 1. DATA PRODUK ASLI BAWAAN APLIKASI KAMU
