@@ -32,7 +32,7 @@ import TarikDana from './tarikdana.jsx';
 // Penjual, Pembeli & Merchant
 import Penjual from './penjual.jsx';
 import Pembeli from './pembeli.jsx';
-import TambahProduk from './tambahproduk.jsx';
+import Tambahproduk from './tambahproduk.jsx';
 import Laporan from './laporan.jsx';
 import Tambahproduk from './tambahproduk.jsx';
 export default function App() {
