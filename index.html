@@ -1,104 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#059669" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="description" content="Kasap.id Marketplace - Jual beli mudah, cepat, dan terpercaya." />
-    <title>Kasap.id | Marketplace Modern</title>
-
-    <!-- Google Font Modern: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome Pro/Free CDN untuk Navigasi Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-    <!-- Preloader Styling Latar Gradasi Hijau - Putih -->
-    <style>
-      :root {
-        --app-green-dark: #065f46;
-        --app-green-main: #059669;
-        --app-green-light: #10b981;
-        --app-white: #ffffff;
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        -webkit-tap-highlight-color: transparent;
-      }
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background: #0f172a;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-      /* Container Ponsel & Latar Gradasi Istimewa */
-      #root {
-        width: 100%;
-        max-width: 480px;
-        min-height: 100vh;
-        background: linear-gradient(180deg, #059669 0%, #10b981 120px, #ecfdf5 280px, #ffffff 480px);
-        background-repeat: no-repeat;
-        background-color: #f8fafc;
-        position: relative;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        display: flex;
-        flex-direction: column;
-      }
-      /* Animasi Splash Loader Sebelum React Render */
-      .app-loader {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        color: white;
-        z-index: 9999;
-      }
-      .loader-logo {
-        width: 70px;
-        height: 70px;
-        background: white;
-        color: var(--app-green-main);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        animation: pulse 1.6s infinite ease-in-out;
-      }
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-      }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kasap.id - Belanja Produk Tradisional</title>
   </head>
   <body>
-    <!-- Container Utama React -->
-    <div id="root">
-      <div class="app-loader" id="splash">
-        <div class="loader-logo">
-          <i class="fa-solid fa-bag-shopping"></i>
-        </div>
-        <p style="font-weight: 700; font-size: 18px; letter-spacing: 0.5px;">Kasap.id</p>
-      </div>
-    </div>
-
-    <!-- Hubungkan ke Engine Utama React -->
-    <script type="module" src="/src/main.jsx"></script>
+    <div id="root"></div>
   </body>
 </html>
