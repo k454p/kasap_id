@@ -87,14 +87,7 @@ export default function Beranda({ menu, navigate, goBack }) {
 
   return (
     <div className="app-viewport">
-      {/* HEADER UTAMA KASAP.ID */}
-      <div className="shopee-header">
-        <span className="brand-title">Kasap.id</span>
-        <div className="search-container">
-          <input 
-            type="text" 
-            className="search-input" 
-            placeholder="Diskon s/d 80% di Kasap..." 
+      {/* HEADER UTAMA KASAP.ID DENGAN IKON KERANJANG & CHAT */}
       <div className="shopee-header">
         <span className="brand-title" onClick={() => navigate('beranda')} style={{ cursor: 'pointer' }}>
           Kasap.id
@@ -107,23 +100,21 @@ export default function Beranda({ menu, navigate, goBack }) {
           />
         </div>
         <div className="header-icons">
-          <button className="icon-btn" onClick={() => navigate('keranjang')} aria-label="Keranjang">
+          <button className="icon-btn" onClick={() => navigate('keranjang')}>
             🛒
             <span className="badge">3</span>
           </button>
-          <button className="icon-btn" onClick={() => navigate('chat')} aria-label="Chat">
+          <button className="icon-btn" onClick={() => navigate('chat')}>
             💬
             <span className="badge">1</span>
           </button>
-        </div>
-      </div>
-          />
         </div>
       </div>
 
       {/* AREA UTAMA KONTEN */}
       <div style={{ flex: 1 }}>
         {renderContent()}
+
       </div>
 
       {/* NAVIGASI NAVBAR BAWAH */}
