@@ -1,145 +1,66 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-export default function TambahProduk({ setPage }) {
-  const [form, setForm] = useState({ nama: '', harga: '', stok: '', kategori: 'Pakaian', gambar: '', deskripsi: '' });
+// Di sini kata "default" sudah dihapus agar tidak bentrok
+export function TambahProduk({ setPage }) {
+  const [form, setForm] = useState({ name: '', harga: '', stok: '', kategori: '', gambar: '', deskripsi: '' });
 
   const handleSimpan = () => {
-    if (!form.nama || !form.harga) return alert('Nama & Harga wajib diisi');
-    const list = JSON.parse(localStorage.getItem('kasap_produk') || '[]');
-    list.push({ id: Date.now(), ...form, harga: Number(form.harga) });
-    localStorage.setItem('kasap_produk', JSON.stringify(list));
+    if (!form.name || !form.harga) return;
+    const daftar = JSON.parse(localStorage.getItem('kasap_produk')) || [];
+    daftar.push({ ...form, id: Date.now() });
+    localStorage.setItem('kasap_produk', JSON.stringify(daftar));
     alert('Produk berhasil ditambah!');
     setPage('penjual');
   };
 
   return (
-    <div className="p-4 space-y-4 max-w-md mx-auto bg-gray-50 min-h-screen pb-24">
-      <div className="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm">
-        <button onClick={() => setPage('penjual')} className="text-blue-600 text-sm">← Kembali</button>
-        <h2 className="font-bold">Tambah Produk</h2>
+    <div className="p-4 space-y-4 max-w-md mx-auto">
+      <div className="flex items-center justify-between">
+        <button onClick={() => setPage('penjual')} className="text-gray-600">⬅️ Kembali</button>
+        <h2 className="font-bold text-lg">Tambah Produk Baru</h2>
         <div className="w-10"></div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl space-y-3">
-        <input placeholder="Nama Produk" value={form.nama} onChange={e=>setForm({...form, nama:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
-        <input placeholder="Harga (contoh: 145000)" type="number" value={form.harga} onChange={e=>setForm({...form, harga:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
-        <input placeholder="Stok" type="number" value={form.stok} onChange={e=>setForm({...form, stok:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
-        <select value={form.kategori} onChange={e=>setForm({...form, kategori:e.target.value})} className="w-full border p-3 rounded-xl text-sm">
-          <option>Pakaian</option><option>Sepatu</option><option>Tas</option><option>Lainnya</option>
+      <div className="bg-white p-4 rounded-lg shadow space-y-3">
+        <input placeholder="Nama Produk" className="w-full p-2 border rounded" onChange={(e) => setForm({...form, name: e.target.value})} />
+        <input placeholder="Harga" type="number" className="w-full p-2 border rounded" onChange={(e) => setForm({...form, harga: e.target.value})} />
+        <input placeholder="Stok" type="number" className="w-full p-full border rounded" onChange={(e) => setForm({...form, stok: e.target.value})} />
+        <select value={form.kategori} className="w-full p-2 border rounded" onChange={(e) => setForm({...form, kategori: e.target.value})}>
+          <option>Pakaian</option>
+          <option>Sepatu</option>
+          <option>Tas</option>
         </select>
-        <input placeholder="Link Foto Produk (https://...)" value={form.gambar} onChange={e=>setForm({...form, gambar:e.target.value})} className="w-full border p-3 rounded-xl text-sm" />
-        <textarea placeholder="Deskripsi" value={form.deskripsi} onChange={e=>setForm({...form, deskripsi:e.target.value})} className="w-full border p-3 rounded-xl text-sm h-24"></textarea>
-        <button onClick={handleSimpan} className="w-full bg-green-600 text-white py-3 rounded-xl font-bold">Simpan Produk</button>
+        <input placeholder="Link Foto Produk" className="w-full p-2 border rounded" onChange={(e) => setForm({...form, gambar: e.target.value})} />
+        <textarea placeholder="Deskripsi" className="w-full p-2 border rounded" onChange={(e) => setForm({...form, deskripsi: e.target.value})} />
+        <button onClick={handleSimpan} className="w-full p-2 bg-green-600 text-white rounded font-bold">Simpan Produk</button>
       </div>
     </div>
-  )
+  );
 }
 
+// Hanya fungsi ini yang menggunakan export default
 export default function Penjual({ setPage }) {
-    return (
-        <div className="p-4 space-y-4 max-w-md mx-auto bg-gray-50 min-h-screen pb-24">
-            {/* Header */}
-            <div className="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                <button 
-                    onClick={() => setPage('beranda')}
-                    className="text-blue-600 text-sm font-semibold"
-                >
-                    ← Beranda
-                </button>
-                <h2 className="font-bold text-gray-800 text-base">Dasbor Penjual</h2>
-                <div className="w-10"></div>
-            </div>
-
-            {/* Info Toko */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 rounded-2xl text-white shadow-md flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">
-                        K
-                    </div>
-                    <div>
-                        <h3 className="font-bold text-sm">Kasap ID Store</h3>
-                        <p className="text-xs text-blue-100">Toko Utama • Verified</p>
-                    </div>
-                </div>
-                <button 
-                    onClick={() => setPage('live')}
-                    className="bg-red-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow animate-pulse"
-                >
-                    🔴 Live
-                </button>
-            </div>
-
-            {/* Statistik Toko */}
-      {/* Tombol Tambah Produk */}
-      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-        <button
-          onClick={() => setPage('tambahproduk')}
-          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold text-sm transition"
-        >
-          + Tambah Produk Baru
+  return (
+    <div className="p-4 space-y-4 max-w-md mx-auto">
+      <div className="flex items-center justify-between">
+        <button onClick={() => setPage('beranda')} className="text-blue-600 text-sm">
+          ← Beranda
         </button>
-        <button
-          onClick={() => setPage('daftarproduk')}
-          className="w-full mt-2 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold text-sm"
-        >
-          Lihat Daftar Produk Saya
-        </button>
+        <h2 className="font-bold text-gray-800">Toko Saya</h2>
+        <div className="w-10"></div>
       </div>
-            <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                    <p className="text-[10px] text-gray-400 font-medium">Pendapatan Bulan Ini</p>
-                    <h3 className="text-base font-extrabold text-gray-800 mt-1">Rp 4.850.000</h3>
-                </div>
-                <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                    <p className="text-[10px] text-gray-400 font-medium">Total Produk Terjual</p>
-                    <h3 className="text-base font-extrabold text-blue-600 mt-1">32 Barang</h3>
-                </div>
-            </div>
 
-            {/* Status Pesanan Masuk */}
-            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 space-y-3">
-                <h3 className="font-bold text-gray-800 text-sm">Kelola Pesanan Masuk</h3>
-                
-                <div className="grid grid-cols-3 gap-2 text-center">
-                    <button onClick={() => setPage('dikemas')} className="p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition">
-                        <span className="text-xl block mb-1">📦</span>
-                        <span className="text-[10px] text-blue-800 font-bold">Perlu Dikemas</span>
-                    </button>
-                    <button onClick={() => setPage('dikirim')} className="p-3 bg-green-50 rounded-xl hover:bg-green-100 transition">
-                        <span className="text-xl block mb-1">🚚</span>
-                        <span className="text-[10px] text-green-800 font-bold">Dikirim</span>
-                    </button>
-                    <button onClick={() => setPage('selesai')} className="p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition">
-                        <span className="text-xl block mb-1">✅</span>
-                        <span className="text-[10px] text-gray-700 font-bold">Selesai</span>
-                    </button>
-                </div>
-            </div>
-
-            {/* Menu Navigasi Penjual */}
-            <div className="bg-white p-2 rounded-2xl shadow-sm border border-gray-100 space-y-1">
-                <button 
-                    onClick={() => setPage('chat')}
-                    className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl text-xs font-semibold text-gray-700 transition"
-                >
-                    <span>💬 Chat Pembeli</span>
-                    <span>→</span>
-                </button>
-                <button 
-                    onClick={() => setPage('saldo')}
-                    className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl text-xs font-semibold text-gray-700 transition"
-                >
-                    <span>💳 Saldo & Penarikan Dana</span>
-                    <span>→</span>
-                </button>
-                <button 
-                    onClick={() => setPage('laporan')}
-                    className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl text-xs font-semibold text-gray-700 transition"
-                >
-                    <span>📊 Laporan Penjualan</span>
-                    <span>→</span>
-                </button>
-            </div>
+      <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-4 rounded-lg text-white">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-white text-green-600 font-bold rounded-full flex items-center justify-center text-xl">
+            K
+          </div>
+          <div>
+            <h3 className="font-bold">Kasap Toko</h3>
+            <p className="text-xs text-green-100">Status: Aktif</p>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
