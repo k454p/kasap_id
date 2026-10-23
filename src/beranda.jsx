@@ -15,6 +15,8 @@ export default function Beranda({ menu, navigate, goBack }) {
     switch (menu) {
       case 'akunsaya':
         return <AkunSaya navigate={navigate} goBack={goBack} />;
+        case 'detail':
+      return <DetailProduk navigate={navigate} />
       default:
         return (
           <>
