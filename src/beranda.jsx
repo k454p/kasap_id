@@ -4,10 +4,10 @@ import AkunSaya from './akunsaya';
 export default function Beranda({ menu, navigate, goBack }) {
   // 1. DATA PRODUK ASLI BAWAAN APLIKASI KAMU
   const produkRekomendasi = [
-    { id: 1, nama: "Kemeja Flanel Casual", harga: "145.000", rating: "4.8", terjual: "1,2rb", gambar: "Foto Produk" },
-    { id: 2, nama: "Celana Chinos Panjang", harga: "175.000", rating: "4.7", terjual: "950", gambar: "Foto Produk" },
-    { id: 3, nama: "Sepatu Sneakers Pria", harga: "299.000", rating: "4.9", terjual: "3,4rb", gambar: "Foto Produk" },
-    { id: 4, nama: "Tas Ransel Laptop", harga: "210.000", rating: "4.6", terjual: "820", gambar: "Foto Produk" }
+    { id: 1, nama: "Cak Udin", harga: "145.000", rating: "4.8", terjual: "1,2rb", gambar: "Foto Produk" },
+    { id: 2, nama: "Cak Wafa", harga: "175.000", rating: "4.7", terjual: "950", gambar: "Foto Produk" },
+    { id: 3, nama: "Cak Icong Lee", harga: "299.000", rating: "4.9", terjual: "3,4rb", gambar: "Foto Produk" },
+    { id: 4, nama: "Isol", harga: "210.000", rating: "4.6", terjual: "820", gambar: "Foto Produk" }
   ];
 
   const renderContent = () => {
