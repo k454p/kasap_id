@@ -2,7 +2,14 @@ import React from 'react';
 import AkunSaya from './akunsaya';
 
 export default function Beranda({ menu, navigate, goBack }) {
-  
+  // 1. DATA PRODUK ASLI BAWAAN APLIKASI KAMU
+  const produkRekomendasi = [
+    { id: 1, nama: "Kemeja Flanel Casual", harga: "145.000", rating: "4.8", terjual: "1,2rb", gambar: "Foto Produk" },
+    { id: 2, nama: "Celana Chinos Panjang", harga: "175.000", rating: "4.7", terjual: "950", gambar: "Foto Produk" },
+    { id: 3, nama: "Sepatu Sneakers Pria", harga: "299.000", rating: "4.9", terjual: "3,4rb", gambar: "Foto Produk" },
+    { id: 4, nama: "Tas Ransel Laptop", harga: "210.000", rating: "4.6", terjual: "820", gambar: "Foto Produk" }
+  ];
+
   const renderContent = () => {
     switch (menu) {
       case 'akunsaya':
@@ -10,7 +17,7 @@ export default function Beranda({ menu, navigate, goBack }) {
       default:
         return (
           <>
-            {/* Bagian Kartu Saldo & Pesanan */}
+            {/* 2. KARTU SALDO & PESANAN */}
             <div className="balance-card-container">
               <div className="balance-card">
                 <div className="balance-item" onClick={() => navigate('saldo')}>
@@ -28,12 +35,50 @@ export default function Beranda({ menu, navigate, goBack }) {
               </div>
             </div>
 
-            {/* Konten Selamat Datang */}
-            <div style={{ padding: '20px 14px', textAlign: 'center' }}>
-              <h3 className="promo-title" style={{ fontSize: '1.2rem', marginBottom: '8px' }}>
-                Selamat Datang di Kasap.id
-              </h3>
-              <p className="promo-desc">Silakan pilih menu di bawah untuk mulai menjelajah.</p>
+            {/* 3. BANNER PROMO SPESIAL */}
+            <div className="promo-section">
+              <h3 className="promo-title">🔥 Promo Spesial Hari Ini!</h3>
+              <p className="promo-desc">Diskon hingga 50% untuk produk pilihan terbaik.</p>
+              <button className="btn-promo-shop" onClick={() => navigate('live')}>Belanja Sekarang</button>
+            </div>
+
+            {/* 4. KATEGORI PILIHAN */}
+            <h3 className="section-title">Kategori Pilihan</h3>
+            <div className="category-list">
+              <div className="category-item" onClick={() => navigate('kategori-pakaian')}>
+                <span>👕 Pakaian</span>
+              </div>
+              <div className="category-item" onClick={() => navigate('kategori-sepatu')}>
+                <span>👟 Sepatu</span>
+              </div>
+              <div className="category-item" onClick={() => navigate('kategori-tas')}>
+                <span>🎒 Tas</span>
+              </div>
+              <div className="category-item" onClick={() => navigate('bantuan')}>
+                <span>💬 Bantuan</span>
+              </div>
+            </div>
+
+            {/* 5. REKOMENDASI UNTUKMU (GRID PRODUK BERJEJER RAPI KE SAMPING) */}
+            <h3 className="section-title">Rekomendasi Untukmu</h3>
+            <div className="product-grid">
+              {produkRekomendasi.map((item) => (
+                <div key={item.id} className="product-card" onClick={() => navigate(`produk-${item.id}`)}>
+                  <div className="product-img-placeholder">
+                    {item.gambar}
+                  </div>
+                  <div className="product-info">
+                    <h4 className="product-name">{item.nama}</h4>
+                    <p className="product-price">Rp {item.harga}</p>
+                    <div className="product-meta">
+                      <span className="star-icon">★</span>
+                      <span>{item.rating}</span>
+                      <span style={{ color: '#e5e7eb', margin: '0 4px' }}>|</span>
+                      <span>Terjual {item.terjual}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </>
         );
@@ -42,7 +87,7 @@ export default function Beranda({ menu, navigate, goBack }) {
 
   return (
     <div className="app-viewport">
-      {/* Header Atas */}
+      {/* HEADER UTAMA KASAP.ID */}
       <div className="shopee-header">
         <span className="brand-title">Kasap.id</span>
         <div className="search-container">
@@ -54,12 +99,12 @@ export default function Beranda({ menu, navigate, goBack }) {
         </div>
       </div>
 
-      {/* Area Konten Utama */}
+      {/* AREA UTAMA KONTEN */}
       <div style={{ flex: 1 }}>
         {renderContent()}
       </div>
 
-      {/* Navigasi Menu Bawah (Navbar Bottom) */}
+      {/* NAVIGASI NAVBAR BAWAH */}
       <div className="navbar-bottom">
         <button onClick={() => navigate('beranda')} className={`nav-item ${menu === 'beranda' || !menu ? 'active' : ''}`}>
           <span>🏠</span>
