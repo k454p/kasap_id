@@ -95,7 +95,6 @@ export default function Beranda({ menu, navigate, goBack }) {
             type="text" 
             className="search-input" 
             placeholder="Diskon s/d 80% di Kasap..." 
-                  {/* HEADER UTAMA KASAP.ID DENGAN IKON KERANJANG & CHAT */}
       <div className="shopee-header">
         <span className="brand-title" onClick={() => navigate('beranda')} style={{ cursor: 'pointer' }}>
           Kasap.id
