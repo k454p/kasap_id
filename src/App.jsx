@@ -5,9 +5,13 @@ import './App.css';
 function App() {
   const [menu, setMenu] = useState('beranda');
 
-  const navigate = (halamanBaru) => {
+    const navigate = (halamanBaru, opsi = {}) => {
     setMenu(halamanBaru);
+    if (opsi.state) {
+      window.history.replaceState({ usr: opsi.state }, '');
+    }
   };
+
 
   const goBack = () => {
     setMenu('beranda');
