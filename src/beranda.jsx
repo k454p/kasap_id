@@ -81,8 +81,7 @@ export default function Beranda({ setPage }) {
               <div className="flex justify-between items-center text-xs text-gray-500 mt-2">
                 <span>⭐ {item.rating}</span>
                 <span>Terjual {item.terjual}</span>
-              </div>
-        
+              </div>   
     </div>
         
      );
