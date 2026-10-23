@@ -74,7 +74,7 @@ export default function Beranda({ setPage }) {
           objectFit: 'cover'
         }}
       />
-      <div className="p-3">
+    <div className="p-3">
         <h4 className="font-medium text-gray-800">{item.nama}</h4>
         <p className="text-orange-500 font-bold">Rp {item.harga}</p>
         <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
@@ -83,8 +83,7 @@ export default function Beranda({ setPage }) {
         </div>
       </div>
     </div>
-  ))}
-    </div>
-          </div>
-           ) ;
-           }
+  ));
+};
+
+export default Beranda;
