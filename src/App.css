@@ -63,6 +63,41 @@
   font-size: 0.9rem;
   outline: none;
 }
+/* STYLE TAMBAHAN UNTUK IKON HEADER */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 4px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  position: relative;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn .badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  background-color: #ff3b30; /* Merah cerah untuk notifikasi */
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 1px 5px;
+  min-width: 16px;
+  text-align: center;
+  border: 1px solid var(--primary); /* Sesuai dengan warna dasar hijau */
+}
+
 
 /* 4. KARTU SALDO & PESANAN (KASAPPAY & PESANAN SAYA) */
 .balance-card-container {
