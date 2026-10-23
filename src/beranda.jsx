@@ -95,6 +95,29 @@ export default function Beranda({ menu, navigate, goBack }) {
             type="text" 
             className="search-input" 
             placeholder="Diskon s/d 80% di Kasap..." 
+                  {/* HEADER UTAMA KASAP.ID DENGAN IKON KERANJANG & CHAT */}
+      <div className="shopee-header">
+        <span className="brand-title" onClick={() => navigate('beranda')} style={{ cursor: 'pointer' }}>
+          Kasap.id
+        </span>
+        <div className="search-container">
+          <input 
+            type="text" 
+            className="search-input" 
+            placeholder="Diskon s/d 80% di Kasap..." 
+          />
+        </div>
+        <div className="header-icons">
+          <button className="icon-btn" onClick={() => navigate('keranjang')} aria-label="Keranjang">
+            🛒
+            <span className="badge">3</span>
+          </button>
+          <button className="icon-btn" onClick={() => navigate('chat')} aria-label="Chat">
+            💬
+            <span className="badge">1</span>
+          </button>
+        </div>
+      </div>
           />
         </div>
       </div>
