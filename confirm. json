@@ -1,0 +1,9 @@
+{
+  "appId": "com.kasap.id",
+  "appName": "kasap_id",
+  "webDir": "dist",
+  "server": {
+    "url": "https://vercel.app",
+    "cleartext": true
+  }
+}
