@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Reset default margin & padding agar menempel rapi di layar HP/Desktop */
-body {
-  margin: 0;
-  padding: 0;
-}
